@@ -314,3 +314,9 @@ Caused by: java.net.SocketException: Connection reset
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2017-09-14 12:24:19.911
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2017-09-14 13:35:51.924
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2017-09-14 13:35:51.947
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
