@@ -1,0 +1,59 @@
+package com.wipro.logic;
+
+public class Car {
+private String companyName;
+private String carName;
+private String type;
+private String regNo;
+private double rent;
+private int noOfSeats;
+private static int totalNos=0;
+public String getCompanyName() {
+	return companyName;
+}
+public void setCompanyName(String companyName) {
+	this.companyName = companyName;
+}
+public String getCarName() {
+	return carName;
+}
+public void setCarName(String carName) {
+	this.carName = carName;
+}
+public String getType() {
+	return type;
+}
+public void setType(String type) {
+	this.type = type;
+}
+public String getRegNo() {
+	return regNo;
+}
+public void setRegNo(String regNo) {
+	this.regNo = regNo;
+}
+public double getRent() {
+	return rent;
+}
+public void setRent(double rent) {
+	this.rent = rent;
+}
+public int getNoOfSeats() {
+	return noOfSeats;
+}
+public void setNoOfSeats(int noOfSeats) {
+	this.noOfSeats = noOfSeats;
+}
+public static int getTotalNos() {
+	return totalNos;
+}
+public static void setTotalNos(int totalNos) {
+	Car.totalNos = totalNos;
+}
+
+public Car(){
+
+}
+
+
+}

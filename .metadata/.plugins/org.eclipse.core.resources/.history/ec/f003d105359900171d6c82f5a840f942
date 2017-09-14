@@ -1,0 +1,113 @@
+package com.wipro.logic;
+
+import java.awt.List;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet("/admin")
+public class ControllerServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private CarDAO carDAO;   
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ControllerServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession s = request.getSession();
+   	 
+        if(s.isNew())
+        {
+        	System.out.println("New login");
+        	response.sendRedirect("loginRedirect.jsp");
+            return;
+        }
+        
+        else if(!(((String)s.getAttribute("name")).equals("Aswin")))
+        {
+        	RequestDispatcher r=request.getRequestDispatcher("illegalAccess.jsp");
+        	r.forward(request, response);
+        	return;
+        }
+        else{
+        	
+        }
+        
+       
+    	System.out.println("Aswin");
+    	String action = request.getServletPath();
+    	 try {
+             switch (action) {
+             case "/login":
+             	login(request,response);
+             	break;
+             
+             }
+         } catch (SQLException ex) {
+             throw new ServletException(ex);
+         }
+     }
+  
+		
+	private void login(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+    	if((request.getParameter("admin")).equals("user")&&(request.getParameter("password")).equals("9847"))
+    	{
+    		System.out.println("logged in as admin");
+    		HttpSession s=request.getSession();
+    		s.setAttribute("name", "Aswin");
+    		listCar(request,response);
+    	}
+    	else
+    	{
+    		request.getSession().invalidate();
+    		System.out.println(request.getSession(false));
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("invalidlogin.jsp");
+            dispatcher.forward(request, response);
+    	}
+	}
+	
+	private void listCar(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        HttpSession s=request.getSession();
+        String n=(String)s.getAttribute("name");
+        if(n!=null &&n.equals("Aswin"))
+        {
+        	List<Car> listCar = carDAO.listAllCars();
+            request.setAttribute("listCar", listCar);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListCar.jsp");
+            dispatcher.forward(request, response);
+        }
+        else
+        {
+        	RequestDispatcher r=request.getRequestDispatcher("loginRedirect.jsp");
+        	r.forward(request, response);
+        }
+    	
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
