@@ -1,16 +1,21 @@
 package com.wipro.logic;
 
+
 import java.io.IOException;
+
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AdminLoginCheckServlet
  */
-@WebServlet("/AdminLoginCheckServlet")
+@WebServlet("/adlogin")
 public class AdminLoginCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +31,20 @@ public class AdminLoginCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if((request.getParameter("admin")).equals("user")&&(request.getParameter("password")).equals("9847"))
+    	{
+    		System.out.println("logged in as admin");
+    		HttpSession s=request.getSession();
+    		s.setAttribute("name", "Aswin");
+    		response.sendRedirect("http://http://localhost:8080/CarRental/list");
+    	}
+    	else
+    	{
+    		request.getSession().invalidate();
+    		System.out.println(request.getSession(false));
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("invalidlogin.jsp");
+            dispatcher.forward(request, response);
+    	}
 	}
 
 	/**
@@ -37,5 +54,5 @@ public class AdminLoginCheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 }

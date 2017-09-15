@@ -57,6 +57,10 @@ public Car(String companyName, String carName, String type, String regNo, double
 	this.rent = rent;
 	this.noOfSeats = noOfSeats;
 }
+public Car(String regNo) {
+	super();
+	this.regNo = regNo;
+}
 
 
 
