@@ -26,5 +26,9 @@
   <session-timeout>1</session-timeout>
   </session-config>
   
-  
+  <jsp-property-group>
+        <display-name>all jsp</display-name>
+        <url-pattern>/*</url-pattern>
+        <include-prelude>/timedoutRedirect.jsp</include-prelude>           
+</jsp-property-group>
 </web-app>
