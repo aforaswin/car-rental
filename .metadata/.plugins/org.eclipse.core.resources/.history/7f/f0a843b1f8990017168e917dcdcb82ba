@@ -31,7 +31,7 @@ public class AdminLoginCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if((request.getParameter("userName")).equals("user")&&(request.getParameter("password")).equals("9847"))
+		if((request.getParameter("admin")).equals("user")&&(request.getParameter("password")).equals("9847"))
     	{
     		System.out.println("logged in as admin");
     		HttpSession s=request.getSession();

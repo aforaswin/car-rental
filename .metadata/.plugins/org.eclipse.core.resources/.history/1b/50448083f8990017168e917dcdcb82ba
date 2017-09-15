@@ -1,9 +1,6 @@
 package com.wipro.logic;
 
-
 import java.io.IOException;
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class AdminLoginCheckServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/adlogin")
-public class AdminLoginCheckServlet extends HttpServlet {
+@WebServlet("/admin")
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginCheckServlet() {
+    public AdminLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +28,25 @@ public class AdminLoginCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if((request.getParameter("userName")).equals("user")&&(request.getParameter("password")).equals("9847"))
-    	{
-    		System.out.println("logged in as admin");
-    		HttpSession s=request.getSession();
-    		s.setAttribute("name", "Aswin");
-    		response.sendRedirect("http://http://localhost:8080/CarRental/list");
-    	}
-    	else
-    	{
-    		request.getSession().invalidate();
-    		System.out.println(request.getSession(false));
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("invalidlogin.jsp");
-            dispatcher.forward(request, response);
-    	}
-	}
+		HttpSession s = request.getSession();
+   	 
+        if(s.isNew())
+        {
+        	System.out.println("New login");
+        	response.sendRedirect("loginRedirect.jsp");
+            return;
+        }
+        
+        System.out.println("same session");
+        
+       
+    	
+     }
+  
+		
+	
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,5 +55,5 @@ public class AdminLoginCheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
+
 }
