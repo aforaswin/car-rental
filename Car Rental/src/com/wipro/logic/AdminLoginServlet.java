@@ -37,15 +37,7 @@ public class AdminLoginServlet extends HttpServlet {
             return;
         }
         
-        else if(!(((String)s.getAttribute("name")).equals("Aswin")))
-        {
-        	RequestDispatcher r=request.getRequestDispatcher("illegalAccess.jsp");
-        	r.forward(request, response);
-        	return;
-        }
-        else{
-        	
-        }
+        System.out.println("same session");
         
        
     	
