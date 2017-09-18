@@ -36,7 +36,7 @@ public class AdminLoginCheckServlet extends HttpServlet {
     		System.out.println("logged in as admin");
     		HttpSession s=request.getSession();
     		s.setAttribute("name", "Aswin");
-    		response.sendRedirect("http://http://localhost:8080/CarRental/list");
+    		response.sendRedirect("http://localhost:8080/CarRental/list");
     	}
     	else
     	{

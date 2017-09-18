@@ -47,7 +47,7 @@ public class UpdateCarServlet extends HttpServlet {
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		}
-        response.sendRedirect("http://http://localhost:8080/CarRental/list");
+        response.sendRedirect("http://localhost:8080/CarRental/list");
 	}
 
 	/**

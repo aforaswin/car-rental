@@ -17,7 +17,7 @@ public class CarDAO {
     private Connection jdbcConnection;
      
     public CarDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-        this.jdbcURL = jdbcURL;
+        this.jdbcURL = "jdbc:mysql://localhost:3306/car";
         this.jdbcUsername = jdbcUsername;
         this.jdbcPassword = jdbcPassword;
     }
@@ -29,8 +29,7 @@ public class CarDAO {
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
-            jdbcConnection = DriverManager.getConnection(
-                                        jdbcURL, jdbcUsername, jdbcPassword);
+            jdbcConnection = DriverManager.getConnection(jdbcURL,jdbcUsername,jdbcPassword);
         }
     }
      
@@ -109,12 +108,12 @@ public class CarDAO {
         connect();
          
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setString(1, car.getRegNo());
-        statement.setString(2, car.getCompanyName());
-        statement.setString(3, car.getCarName());
-        statement.setString(4, car.getType());
-        statement.setInt(5, car.getNoOfSeats());
-        statement.setDouble(6, car.getRent());
+        statement.setString(1, car.getCompanyName());
+        statement.setString(2, car.getCarName());
+        statement.setString(3, car.getType());
+        statement.setInt(4, car.getNoOfSeats());
+        statement.setDouble(5, car.getRent());
+        statement.setString(6, car.getRegNo());
          
         boolean rowUpdated = statement.executeUpdate() > 0;
         statement.close();

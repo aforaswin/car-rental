@@ -34,12 +34,12 @@
                 </h2>
             </caption>
                 <c:if test="${car != null}">
-                    <input type="hidden" name="id" value="<c:out value='${car.id}' />" />
+                    <input type="hidden" name="id" value="<c:out value='${car.regNo}' />" />
                 </c:if>           
             <tr>
                 <th>Registration number: </th>
                 <td>
-                    <input type="text" name="reg_no" size="6"
+                    <input type="text" name="reg_no" size="15"
                             value="<c:out value='${car.regNo}' />" 
                        required placeholder="Kl 01 AT 8400" autofocus />
                 </td>
@@ -63,7 +63,7 @@
            <tr>
                 <th>Type: </th>
                 <td>
-                    <input type="text" name="type" size="6"
+                    <input type="text" name="type" size="15"
                             value="<c:out value='${car.type}' />" required
                     />
                 </td>
@@ -93,6 +93,9 @@
         </form>
     </div> 
     <br>
-   
+  <%
+int timeout = session.getMaxInactiveInterval();
+response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+%> 
 </body>
 </html>

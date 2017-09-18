@@ -37,7 +37,7 @@ public class AdminLoginServlet extends HttpServlet {
         }
         
         System.out.println("same session");
-        
+        response.sendRedirect("http://localhost:8080/CarRental/list");
        
     	
      }

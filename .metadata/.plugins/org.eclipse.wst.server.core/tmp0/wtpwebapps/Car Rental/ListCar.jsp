@@ -46,5 +46,9 @@
     </div>  
     <br>
     <h4> <a href="logout">Logout</a>  </h4> 
+    <%
+int timeout = session.getMaxInactiveInterval();
+response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+%>
 </body>
 </html>
