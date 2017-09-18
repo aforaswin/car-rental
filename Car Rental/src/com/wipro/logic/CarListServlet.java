@@ -23,11 +23,11 @@ public class CarListServlet extends HttpServlet {
 	 
     public void init() {
         String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-        System.out.println(jdbcURL);
+       
         String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-        System.out.println(jdbcUsername);
+        
         String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-        System.out.println(jdbcPassword);
+        
         carDAO = new CarDAO(jdbcURL, jdbcUsername, jdbcPassword);
  
     }

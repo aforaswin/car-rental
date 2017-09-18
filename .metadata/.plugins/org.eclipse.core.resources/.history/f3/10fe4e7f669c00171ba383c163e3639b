@@ -1,0 +1,11 @@
+package com.wipro.logic;
+
+public class User {
+	
+	private long phoneNo;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String email;
+	
+}

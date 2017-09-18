@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Parameter" key="selection"/>
+		<item value="user" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="car"/>
+			<item value="Car"/>
+			<item value="Employee"/>
+			<item value="employee"/>
+			<item value="UserDAO(String jdbcURL, String jdbcUsername, String jdbcPassword)"/>
 			<item value="parameter"/>
 			<item value="Double"/>
 			<item value="Int"/>
-			<item value="String"/>
-			<item value="resultSet"/>
-			<item value="last_name"/>
-			<item value="first_name"/>
-			<item value="reg_no"/>
 		</list>
 		<list key="replacehistory">
+			<item value="user"/>
+			<item value="User"/>
 			<item value="Parameter"/>
 			<item value="String"/>
 			<item value="parameter"/>
 			<item value="request"/>
 			<item value="company_name"/>
 			<item value="reg_no"/>
-			<item value="car"/>
-			<item value="Car"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
