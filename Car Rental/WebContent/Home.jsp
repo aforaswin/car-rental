@@ -28,6 +28,7 @@
                 <th>Actions</th>
             </tr>
             <c:forEach var="car" items="${listCar}">
+                <c:if test="${car.status != true}">
                 <tr>
                     <td><c:out value="${car.regNo}" /></td>
                     <td><c:out value="${car.companyName}" /></td>
@@ -40,6 +41,7 @@
                                            
                     </td>
                 </tr>
+                </c:if>
             </c:forEach>
         </table>
     </div>  
@@ -47,7 +49,7 @@
     <h4> <a href="userLogout">Logout</a>  </h4> 
        <%
 int timeout = session.getMaxInactiveInterval();
-response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+response.setHeader("Refresh", timeout + "; URL = userLogint.jsp");
 %>
 </body>
 </html>

@@ -7,6 +7,7 @@ private String type;
 private String regNo;
 private double rent;
 private int noOfSeats;
+private boolean status;
 
 public String getCompanyName() {
 	return companyName;
@@ -56,6 +57,13 @@ public Car(String companyName, String carName, String type, String regNo, double
 	this.regNo = regNo;
 	this.rent = rent;
 	this.noOfSeats = noOfSeats;
+	status=false;
+}
+public boolean isStatus() {
+	return status;
+}
+public void setStatus(boolean status) {
+	this.status = status;
 }
 public Car(String regNo) {
 	super();

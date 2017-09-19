@@ -21,6 +21,30 @@
     <servlet-name>New</servlet-name>
     <url-pattern>/new</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>New1</servlet-name>
+    <jsp-file>/UserForm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>New1</servlet-name>
+    <url-pattern>/newUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Edit</servlet-name>
+    <jsp-file>/EditUser.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edit</servlet-name>
+    <url-pattern>/editUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Change</servlet-name>
+    <jsp-file>/Change.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Change</servlet-name>
+    <url-pattern>/change</url-pattern>
+  </servlet-mapping>
   <session-config>
     <session-timeout>1</session-timeout>
   </session-config>

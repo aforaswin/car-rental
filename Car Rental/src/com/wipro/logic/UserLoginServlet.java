@@ -51,7 +51,7 @@ public class UserLoginServlet extends HttpServlet {
         }
         
         System.out.println("same session");
-        response.sendRedirect("http://localhost:8080/CarRental/55");
+        response.sendRedirect("http://localhost:8080/CarRental/home");
 	}
 
 	/**
