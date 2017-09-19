@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.wipro.connection.UserDAO;
+import com.wipro.model.User;
+
 /**
  * Servlet implementation class ChangePasswordServlet
  */
@@ -47,13 +50,12 @@ public class ChangePasswordServlet extends HttpServlet {
 		if(p1.equals(p2)&&!(p2.equals(p3))){
 			u.setPassword(p3);
 			try {
-				userDAO.updateUser(u);
+				userDAO.updateUser(u,u.getPhoneNo());
 			} catch (SQLException e) {
 				throw new ServletException(e);
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Home.jsp");
-	        dispatcher.forward(request, response);
-	        return;
+			
+			response.sendRedirect("http://localhost:8080/CarRental/home");
 		}
 		
 		else{

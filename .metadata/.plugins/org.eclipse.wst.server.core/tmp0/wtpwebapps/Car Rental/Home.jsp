@@ -24,10 +24,11 @@
                 <th>Car</th>
                 <th>Type</th>
                 <th>Number of Seats</th>
-                <th>Rent per hour(Rs)</th>
+                <th>Rent per day(Rs)</th>
                 <th>Actions</th>
             </tr>
             <c:forEach var="car" items="${listCar}">
+                <c:if test="${car.status=='Available'}">
                 <tr>
                     <td><c:out value="${car.regNo}" /></td>
                     <td><c:out value="${car.companyName}" /></td>
@@ -36,10 +37,14 @@
                     <td><c:out value="${car.noOfSeats}" /></td>
                     <td><c:out value="${car.rent}" /></td>
                     <td>
-                        <a href="checkout?id=<c:out value='${car.regNo}'/>" >Checkout</a>
-                                           
+                        <form action="checkout" method="post">
+                        Number of days: <input type="number" name="days" min="1" max="30"/><br/><br/>
+                        <input type="hidden" name="id" value="<c:out value='${car.regNo}' />">
+                        <input type="submit" value="Checkout"/>
+                            </form>               
                     </td>
                 </tr>
+                </c:if>
             </c:forEach>
         </table>
     </div>  
@@ -47,7 +52,7 @@
     <h4> <a href="userLogout">Logout</a>  </h4> 
        <%
 int timeout = session.getMaxInactiveInterval();
-response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+response.setHeader("Refresh", timeout + "; URL = userLogin.jsp");
 %>
 </body>
 </html>

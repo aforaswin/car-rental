@@ -13,7 +13,7 @@
 <div align="center">>
        
             <form action="editUser1" method="post">
-        
+        <input type="hidden" name="id" value="<c:out value='${user.phoneNo}' />"/>
         <table border="1" cellpadding="5">
             <caption>
                 <h2>

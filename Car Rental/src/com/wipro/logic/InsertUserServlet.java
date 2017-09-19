@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wipro.connection.UserDAO;
+import com.wipro.model.User;
+
 /**
  * Servlet implementation class InsertUserServlet
  */

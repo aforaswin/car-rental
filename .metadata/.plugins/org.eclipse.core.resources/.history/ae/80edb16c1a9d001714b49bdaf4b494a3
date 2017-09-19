@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<center>
+        <h1>Checkout</h1>
+        
+             
+        
+    </center>
+    <div align="center">
+        <table border="1" cellpadding="5">
+            <caption><h2>Car details</h2></caption>
+            <tr>
+                <th>Registration</th>
+                <th>Company</th>
+                <th>Car</th>
+                <th>Type</th>
+                <th>Number of Seats</th>
+                <th>Rent per day(Rs)</th>
+                <th>Number of Days</th>
+                <th>Total Rent(Rs)</th>
+            </tr>
+               <tr>
+                    <td><c:out value="${car.regNo}" /></td>
+                    <td><c:out value="${car.companyName}" /></td>
+                    <td><c:out value="${car.carName}" /></td>
+                    <td><c:out value="${car.type}" /></td>
+                    <td><c:out value="${car.noOfSeats}" /></td>
+                    <td><c:out value="${car.rent}" /></td>
+                    <td><c:out value="${days}" /></td>
+                    <td><c:out value="${total}" /></td>
+                    
+                                      
+                    
+                </tr>
+                
+        </table>
+    </div>  
+    <br>
+    <h4> <a href="home">Cancel</a>  </h4> 
+       <%
+int timeout = session.getMaxInactiveInterval();
+response.setHeader("Refresh", timeout + "; URL = userLogin.jsp");
+%>
+</body>
+</html>

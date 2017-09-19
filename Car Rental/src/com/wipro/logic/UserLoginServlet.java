@@ -35,20 +35,7 @@ public class UserLoginServlet extends HttpServlet {
         	response.sendRedirect("userLogin.jsp");
             return;
         }
-        else 
-        {
-        	
-				String n=(String)s.getAttribute("name");
-				if(n.equals("Aswin"))
-				{
-					s.invalidate();
-					s = request.getSession();
-					System.out.println("New login as user");
-					response.sendRedirect("userLogin.jsp");
-				    return;
-				}
-			
-        }
+       
         
         System.out.println("same session");
         response.sendRedirect("http://localhost:8080/CarRental/home");

@@ -16,5 +16,6 @@ Password :<input type="password" name="pass" required><br><br>
 <p style="text-align:center;"><input type="submit" value="Login"></p>
 </form>
 Don't have an account? <a href="newUser">Sign up.</a>
+<br/>For administrator access, click <a href="admin">here.</a>
 </body>
 </html>

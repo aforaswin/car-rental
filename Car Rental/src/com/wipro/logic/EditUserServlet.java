@@ -1,9 +1,12 @@
 package com.wipro.logic;
 
+import com.wipro.connection.UserDAO;
+import com.wipro.model.User;
+
+
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,24 +43,26 @@ public class EditUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession s=request.getSession();
 		User u=(User) s.getAttribute("user");
+	
 		String firstName = request.getParameter("first_name");
+		System.out.println(firstName);
         String lastName = request.getParameter("last_name");
         String address = request.getParameter("address");
         String email = request.getParameter("email_id");
         long phoneNo = Long.parseLong(request.getParameter("phone_no"));
         String userName=u.getUserName();
         String password=u.getPassword();
+        long l=Long.parseLong(request.getParameter("id"));
         
         User user = new User(phoneNo,firstName,lastName,address,email,userName,password);
         
         try {
-			userDAO.updateUser(user);
+			userDAO.updateUser(user,l);
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		}
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Home.jsp");
-        dispatcher.forward(request, response);
+        s.setAttribute("user", user);
+        response.sendRedirect("http://localhost:8080/CarRental/home");
 		
 	}
 

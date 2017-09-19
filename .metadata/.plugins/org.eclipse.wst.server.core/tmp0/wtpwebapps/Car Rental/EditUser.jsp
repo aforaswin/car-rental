@@ -13,7 +13,7 @@
 <div align="center">>
        
             <form action="editUser1" method="post">
-        
+        <input type="hidden" name="id" value="<c:out value='${user.phoneNo}' />"/>
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
@@ -78,7 +78,7 @@
     <br>
   <%
 int timeout = session.getMaxInactiveInterval();
-response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+response.setHeader("Refresh", timeout + "; URL = userLogin.jsp");
 %> 
 </body>
 </html>

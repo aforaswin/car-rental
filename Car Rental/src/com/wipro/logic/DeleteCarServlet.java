@@ -1,5 +1,9 @@
 package com.wipro.logic;
 
+
+import com.wipro.connection.CarDAO;
+import com.wipro.model.Car;
+
 import java.io.IOException;
 import java.sql.SQLException;
 

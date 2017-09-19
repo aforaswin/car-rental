@@ -14,5 +14,6 @@ User Name:<input type="text" name="userName" required autofocus="autofocus"><br/
 Password :<input type="password" name="password" required><br><br>
 <p style="text-align:center;"><input type="submit" value="Login"></p>
 </form>
+<br/>For user access, click <a href="user">here.</a>
 </body>
 </html>

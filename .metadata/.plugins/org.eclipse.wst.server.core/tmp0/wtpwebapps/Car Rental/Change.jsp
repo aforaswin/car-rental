@@ -67,7 +67,7 @@
     <br>
   <%
 int timeout = session.getMaxInactiveInterval();
-response.setHeader("Refresh", timeout + "; URL = loginRedirect.jsp");
+response.setHeader("Refresh", timeout + "; URL = userLogin.jsp");
 %> 
 </body>
 </html>
