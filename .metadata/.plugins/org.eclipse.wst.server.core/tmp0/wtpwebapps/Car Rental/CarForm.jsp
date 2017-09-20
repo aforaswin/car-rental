@@ -77,13 +77,28 @@
                 </td>
             </tr>
              <tr>
-                <th>Rent per hour(Rs): </th>
+                <th>Rent per day(Rs): </th>
                 <td>
                     <input type="text" name="rent" size="10"
                             value="<c:out value='${car.rent}' />"
                    required  />
                 </td>
             </tr>
+            
+            <c:if test="${car != null}">
+            <tr>
+            <th>Status</th>
+            <td>
+            <input type="radio" name="status" 
+                            value="Available"
+                   required  /> Available<br>
+            <input type="radio" name="status" 
+                            value="Checked Out"
+                   required  /> Checked Out       
+                            </td>
+                            </tr>
+                            </c:if>
+           
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Save" />

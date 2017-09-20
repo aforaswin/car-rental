@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Car Rental</display-name>
-  
   <context-param>
     <param-name>jdbcURL</param-name>
     <param-value>jdbc:mysql://localhost:3306/car</param-value>
@@ -22,9 +21,31 @@
     <servlet-name>New</servlet-name>
     <url-pattern>/new</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>New1</servlet-name>
+    <jsp-file>/UserForm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>New1</servlet-name>
+    <url-pattern>/newUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Edit</servlet-name>
+    <jsp-file>/EditUser.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edit</servlet-name>
+    <url-pattern>/editUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Change</servlet-name>
+    <jsp-file>/Change.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Change</servlet-name>
+    <url-pattern>/change</url-pattern>
+  </servlet-mapping>
   <session-config>
-  <session-timeout>1</session-timeout>
+    <session-timeout>1</session-timeout>
   </session-config>
-  
-  
 </web-app>

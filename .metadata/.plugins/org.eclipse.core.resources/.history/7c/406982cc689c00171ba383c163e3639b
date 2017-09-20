@@ -1,0 +1,150 @@
+package com.wipro.logic;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDAO {
+	private String jdbcURL;
+    private String jdbcUsername;
+    private String jdbcPassword;
+    private Connection jdbcConnection;
+     
+    public UserDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
+        this.jdbcURL = jdbcURL;
+        this.jdbcUsername = jdbcUsername;
+        this.jdbcPassword = jdbcPassword;
+    }
+     
+    protected void connect() throws SQLException {
+        if (jdbcConnection == null || jdbcConnection.isClosed()) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new SQLException(e);
+            }
+            jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        }
+    }
+     
+    protected void disconnect() throws SQLException {
+        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
+            jdbcConnection.close();
+        }
+    }
+     
+    public boolean insertEmployee(Employee employee) throws SQLException {
+        String sql = "INSERT INTO employee (emp_id, first_name, last_name, address, email_id, phone_no) VALUES (?, ?, ?, ?, ?, ?)";
+        connect();
+         
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, employee.getId());
+        statement.setString(2, employee.getFirstName());
+        statement.setString(3, employee.getLastName());
+        statement.setString(4, employee.getAddress());
+        statement.setString(5, employee.getEmail());
+        statement.setLong(6, employee.getPhoneNo());
+        
+         
+        boolean rowInserted = statement.executeUpdate() > 0;
+        statement.close();
+        disconnect();
+        return rowInserted;
+    }
+     
+    public List<Employee> listAllEmployees() throws SQLException {
+        List<Employee> listEmployee = new ArrayList<>();
+         
+        String sql = "SELECT * FROM employee";
+         
+        connect();
+         
+        Statement statement = jdbcConnection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+         
+        while (resultSet.next()) {
+            int id = resultSet.getInt("emp_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String address = resultSet.getString("address");
+            String email = resultSet.getString("email_id");
+            long phone = resultSet.getLong("phone_no");
+             
+            Employee employee = new Employee(id,firstName,lastName,address,email,phone);
+            listEmployee.add(employee);
+        }
+         
+        resultSet.close();
+        statement.close();
+         
+        disconnect();
+         
+        return listEmployee;
+    }
+     
+    public boolean deleteEmployee(Employee employee) throws SQLException {
+        String sql = "DELETE FROM Employee where emp_id = ?";
+         
+        connect();
+         
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, employee.getId());
+         
+        boolean rowDeleted = statement.executeUpdate() > 0;
+        statement.close();
+        disconnect();
+        return rowDeleted;     
+    }
+     
+    public boolean updateEmployee(Employee employee) throws SQLException {
+        String sql = "UPDATE employee SET first_name=?, last_name=?, address=?, email_id=?, phone_no=?";
+        sql += " WHERE emp_id = ?";
+        connect();
+         
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, employee.getFirstName());
+        statement.setString(2, employee.getLastName());
+        statement.setString(3, employee.getAddress());
+        statement.setString(4, employee.getEmail());
+        statement.setLong(5, employee.getPhoneNo());
+        statement.setInt(6, employee.getId());
+         
+        boolean rowUpdated = statement.executeUpdate() > 0;
+        statement.close();
+        disconnect();
+        return rowUpdated;     
+    }
+     
+    public Employee getEmployee(int id) throws SQLException {
+        Employee employee = null;
+        String sql = "SELECT * FROM employee WHERE emp_id = ?";
+         
+        connect();
+         
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, id);
+         
+        ResultSet resultSet = statement.executeQuery();
+         
+        if (resultSet.next()) {
+        	String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String address = resultSet.getString("address");
+            String email = resultSet.getString("email_id");
+            long phone = resultSet.getLong("phone_no");
+             
+            employee = new Employee(id,firstName,lastName,address,email,phone);
+        }
+         
+        resultSet.close();
+        statement.close();
+         
+        return employee;
+    }
+}
+}

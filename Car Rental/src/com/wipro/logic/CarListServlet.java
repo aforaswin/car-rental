@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.wipro.connection.CarDAO;
+import com.wipro.model.Car;
+
 /**
  * Servlet implementation class CarList
  */
@@ -23,11 +26,11 @@ public class CarListServlet extends HttpServlet {
 	 
     public void init() {
         String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-        System.out.println(jdbcURL);
+       
         String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-        System.out.println(jdbcUsername);
+        
         String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-        System.out.println(jdbcPassword);
+        
         carDAO = new CarDAO(jdbcURL, jdbcUsername, jdbcPassword);
  
     }

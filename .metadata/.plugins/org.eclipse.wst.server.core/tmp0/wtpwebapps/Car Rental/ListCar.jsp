@@ -24,7 +24,8 @@
                 <th>Car</th>
                 <th>Type</th>
                 <th>Number of Seats</th>
-                <th>Rent per hour(Rs)</th>
+                <th>Rent per day(Rs)</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             <c:forEach var="car" items="${listCar}">
@@ -35,6 +36,8 @@
                     <td><c:out value="${car.type}" /></td>
                     <td><c:out value="${car.noOfSeats}" /></td>
                     <td><c:out value="${car.rent}" /></td>
+                    <td><c:out value="${car.status}" />
+                    </td>
                     <td>
                         <a href="edit?id=<c:out value='${car.regNo}' />">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wipro.connection.CarDAO;
+import com.wipro.model.Car;
+
 /**
  * Servlet implementation class UpdateCarServlet
  */
@@ -35,15 +38,18 @@ public class UpdateCarServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    String id=request.getParameter("id");
 		String regNo = request.getParameter("reg_no");
         String companyName = request.getParameter("company_name");
         String carName = request.getParameter("car_name");
         String type = request.getParameter("type");
         int noOfSeats = Integer.parseInt(request.getParameter("no_of_seats"));
         double rent = Double.parseDouble(request.getParameter("rent"));
+        String status=request.getParameter("status");
         Car car=new Car(companyName,carName,type, regNo, rent, noOfSeats);
+        car.setStatus(status);
         try {
-			carDAO.updateCar(car);
+			carDAO.updateCar(car,id);
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		}
