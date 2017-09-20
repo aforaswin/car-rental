@@ -8097,13 +8097,3 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2017-09-18 16:51:24.584
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-!SESSION 2017-09-20 08:57:20.196 -----------------------------------------------
-eclipse.buildId=4.7.0.I20160915-0230
-java.version=1.8.0_45
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product org.eclipse.epp.package.jee.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
-
-!ENTRY org.eclipse.core.resources 2 10035 2017-09-20 08:57:28.333
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
